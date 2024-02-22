@@ -73,12 +73,12 @@ class ProductDetailsFragment : Fragment(R.layout.fragment_product_details) {
 
         binding.apply {
             tvProductName.text = product.name
-            tvProductPrice.text = "LE ${product.price}"
+            //tvProductPrice.text = "LE ${product.price}"
 
             product.offerPercentage?.let {
                 val remainingPricePercentage = 1f - it
                 val priceAfterOffer = remainingPricePercentage * product.price
-                tvProductPrice.text = "LE ${String.format("%.2f",priceAfterOffer)}"
+                //tvProductPrice.text = "LE ${String.format("%.2f",priceAfterOffer)}"
             }
 
             tvProductDescription.text = product.description

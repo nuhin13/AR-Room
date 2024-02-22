@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:background="#F4F4F4">
-
+    android:background="#F4F4F4"
+    android:fillViewport="true">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,12 +15,12 @@
             android:id="@+id/progressbarSettings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:indeterminateTint="@color/g_gray700"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:indeterminateTint="@color/g_gray700"
-            android:visibility="gone"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintParent"
@@ -43,9 +41,9 @@
                 android:id="@+id/constraintProfile"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@id/guideline1"
-                app:layout_constraintEnd_toEndOf="@id/guideline2"
                 android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@id/guideline2"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
                 app:layout_constraintTop_toBottomOf="@+id/tvSettings">
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -69,26 +67,24 @@
                     app:layout_constraintTop_toTopOf="@+id/imageUser" />
 
 
-
                 <TextView
                     android:id="@+id/tv_edit_personal_details"
                     style="@style/SmallTextViewThin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="edit personal details"
-                    app:layout_constraintTop_toBottomOf="@id/tvUserName"
-                    app:layout_constraintStart_toStartOf="@+id/tvUserName" />
+                    app:layout_constraintStart_toStartOf="@+id/tvUserName"
+                    app:layout_constraintTop_toBottomOf="@id/tvUserName" />
 
                 <ImageView
                     android:id="@+id/arrow"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:src="@drawable/ic_arrow"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_edit_personal_details"
                     app:layout_constraintEnd_toEndOf="@id/constraintProfile"
                     app:layout_constraintTop_toTopOf="@id/tvUserName"
-                    app:layout_constraintBottom_toBottomOf="@id/tv_edit_personal_details"
                     app:tint="@color/g_blue_gray200" />
-
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -96,12 +92,13 @@
             <TextView
                 android:id="@+id/tvOrders"
                 style="@style/MediumTextViewThin"
-                android:textColor="@color/g_gray700"
-                android:textStyle="normal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Orders"
+                android:textColor="@color/g_gray700"
+                android:textStyle="normal"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@id/guideline1"
                 app:layout_constraintTop_toBottomOf="@id/constraintProfile" />
 
@@ -110,12 +107,13 @@
                 android:id="@+id/linearOrders"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@id/guideline1"
-                app:layout_constraintEnd_toEndOf="@id/guideline2"
-                app:layout_constraintTop_toBottomOf="@id/tvOrders"
-                android:orientation="vertical"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/search_box_background">
+                android:background="@drawable/search_box_background"
+                android:orientation="vertical"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/guideline2"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintTop_toBottomOf="@id/tvOrders">
 
                 <LinearLayout
                     android:id="@+id/linearAllOrders"
@@ -126,9 +124,9 @@
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/ic_all_orders"
                         android:layout_gravity="center_vertical"
                         android:background="@drawable/settings_items_background"
+                        android:src="@drawable/ic_all_orders"
                         app:tint="@color/white" />
 
                     <TextView
@@ -136,36 +134,36 @@
                         style="@style/MediumTextViewThin"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="15dp"
                         android:layout_weight="1"
                         android:text="All orders"
                         android:textColor="@color/g_gray700"
-                        android:textStyle="bold"
-                        android:layout_marginStart="15dp"
-                        android:layout_gravity="center_vertical"/>
+                        android:textStyle="bold" />
 
                     <ImageView
                         android:layout_width="15dp"
                         android:layout_height="15dp"
+                        android:layout_gravity="center_vertical"
                         android:src="@drawable/ic_arrow"
-                        app:tint="@color/g_blue_gray200"
-                        android:layout_gravity="center_vertical"/>
+                        app:tint="@color/g_blue_gray200" />
                 </LinearLayout>
 
 
                 <LinearLayout
+                    android:id="@+id/linearTrackOrder"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginTop="10dp"
-                    android:id="@+id/linearTrackOrder">
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/ic_search"
                         android:layout_gravity="center_vertical"
                         android:background="@drawable/settings_items_background"
                         android:backgroundTint="@color/g_gray700"
+                        android:src="@drawable/ic_search"
                         app:tint="@color/white" />
 
                     <TextView
@@ -173,35 +171,35 @@
                         style="@style/MediumTextViewThin"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="15dp"
                         android:layout_weight="1"
                         android:text="Track Orders"
                         android:textColor="@color/g_gray700"
-                        android:textStyle="bold"
-                        android:layout_marginStart="15dp"
-                        android:layout_gravity="center_vertical"/>
+                        android:textStyle="bold" />
 
                     <ImageView
                         android:layout_width="15dp"
                         android:layout_height="15dp"
+                        android:layout_gravity="center_vertical"
                         android:src="@drawable/ic_arrow"
-                        app:tint="@color/g_blue_gray200"
-                        android:layout_gravity="center_vertical"/>
+                        app:tint="@color/g_blue_gray200" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/linearBilling"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/ic_billing"
                         android:layout_gravity="center_vertical"
                         android:background="@drawable/settings_items_background"
                         android:backgroundTint="#FF9800"
+                        android:src="@drawable/ic_billing"
                         app:tint="@color/white" />
 
                     <TextView
@@ -209,33 +207,32 @@
                         style="@style/MediumTextViewThin"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="15dp"
                         android:layout_weight="1"
                         android:text="Billing"
                         android:textColor="@color/g_gray700"
-                        android:textStyle="bold"
-                        android:layout_marginStart="15dp"
-                        android:layout_gravity="center_vertical"/>
+                        android:textStyle="bold" />
 
                     <ImageView
                         android:layout_width="15dp"
                         android:layout_height="15dp"
+                        android:layout_gravity="center_vertical"
                         android:src="@drawable/ic_arrow"
-                        app:tint="@color/g_blue_gray200"
-                        android:layout_gravity="center_vertical"/>
+                        app:tint="@color/g_blue_gray200" />
                 </LinearLayout>
             </LinearLayout>
-
 
 
             <TextView
                 android:id="@+id/tvNotifications"
                 style="@style/MediumTextViewThin"
-                android:textColor="@color/g_gray700"
-                android:textStyle="normal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:text="Notifications"
+                android:textColor="@color/g_gray700"
+                android:textStyle="normal"
                 app:layout_constraintStart_toStartOf="@id/guideline1"
                 app:layout_constraintTop_toBottomOf="@id/linearOrders" />
 
@@ -243,12 +240,12 @@
                 android:id="@+id/linearNotifications"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@id/guideline1"
-                app:layout_constraintEnd_toEndOf="@id/guideline2"
-                app:layout_constraintTop_toBottomOf="@id/tvNotifications"
-                android:orientation="vertical"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/search_box_background">
+                android:background="@drawable/search_box_background"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@id/guideline2"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintTop_toBottomOf="@id/tvNotifications">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -258,22 +255,22 @@
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/ic_notification"
                         android:layout_gravity="center_vertical"
                         android:background="@drawable/settings_items_background"
-                        app:tint="@color/white"
-                        android:backgroundTint="#4cd964"/>
+                        android:backgroundTint="#4cd964"
+                        android:src="@drawable/ic_notification"
+                        app:tint="@color/white" />
 
                     <TextView
                         style="@style/MediumTextViewThin"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="15dp"
                         android:layout_weight="1"
                         android:text="Notifications"
                         android:textColor="@color/g_gray700"
-                        android:textStyle="bold"
-                        android:layout_marginStart="15dp"
-                        android:layout_gravity="center_vertical"/>
+                        android:textStyle="bold" />
 
                     <androidx.appcompat.widget.SwitchCompat
                         android:id="@+id/switchNotification"
@@ -281,54 +278,51 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:buttonTint="#4cd964"
-                        android:checked="true"
-                        />
+                        android:checked="true" />
 
                 </LinearLayout>
             </LinearLayout>
 
 
-
             <TextView
                 android:id="@+id/tvRegional"
                 style="@style/MediumTextViewThin"
-                android:textColor="@color/g_gray700"
-                android:textStyle="normal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Regional"
+                android:textColor="@color/g_gray700"
+                android:textStyle="normal"
                 app:layout_constraintStart_toStartOf="@id/guideline1"
                 app:layout_constraintTop_toBottomOf="@id/linearNotifications" />
 
             <LinearLayout
-                android:background="@drawable/search_box_background"
                 android:id="@+id/linear_regional"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@id/guideline1"
-                app:layout_constraintEnd_toEndOf="@id/guideline2"
-                app:layout_constraintTop_toBottomOf="@id/tvRegional"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/search_box_background"
                 android:orientation="vertical"
-                android:layout_marginTop="10dp">
+                app:layout_constraintEnd_toEndOf="@id/guideline2"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintTop_toBottomOf="@id/tvRegional">
 
                 <LinearLayout
                     android:id="@+id/linearLogOut"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp">
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/ic_logout"
                         android:layout_gravity="center_vertical"
                         android:background="@drawable/settings_items_background"
                         android:backgroundTint="#ff5823"
-                        app:tint="@color/white"
-                        />
+                        android:src="@drawable/ic_logout"
+                        app:tint="@color/white" />
 
                     <TextView
                         android:id="@+id/logout"
@@ -345,12 +339,10 @@
                     <ImageView
                         android:layout_width="15dp"
                         android:layout_height="15dp"
+                        android:layout_gravity="center_vertical"
                         android:src="@drawable/ic_arrow"
-                        app:tint="@color/g_blue_gray200"
-                        android:layout_gravity="center_vertical"/>
+                        app:tint="@color/g_blue_gray200" />
                 </LinearLayout>
-
-
             </LinearLayout>
 
 
@@ -362,13 +354,12 @@
                 android:fontFamily="@font/sf_pro_display"
                 android:text="Version 1.0"
                 android:textColor="@color/g_gray700"
-                android:textSize="10sp"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/guideline2"
                 app:layout_constraintStart_toStartOf="@id/guideline1"
-                app:layout_constraintTop_toBottomOf="@+id/linear_regional" />
-
-
+                app:layout_constraintTop_toBottomOf="@+id/linear_regional"
+                app:layout_constraintVertical_bias="0.984" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline1"

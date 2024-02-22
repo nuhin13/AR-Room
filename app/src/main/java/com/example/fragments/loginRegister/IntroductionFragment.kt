@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -12,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.activities.ShoppingActivity
 import com.example.aroom.R
 import com.example.aroom.databinding.FragmentIntroductionBinding
+import com.example.util.Resource
 import com.example.viewmodel.starting.IntroductionViewModel
 import com.example.viewmodel.starting.IntroductionViewModel.Companion.ACCOUNT_OPTIONS_FRAGMENT
 import com.example.viewmodel.starting.IntroductionViewModel.Companion.SHOPPING_ACTIVITY
@@ -43,9 +45,9 @@ class IntroductionFragment : Fragment(R.layout.fragment_introduction) {
                             startActivity(intent)
                         }
                     }
-                    ACCOUNT_OPTIONS_FRAGMENT -> {
-                        findNavController().navigate(it)
-                    }
+//                    ACCOUNT_OPTIONS_FRAGMENT -> {
+//                        findNavController().navigate(it)
+//                    }
                     else -> Unit
                 }
             }
@@ -53,7 +55,34 @@ class IntroductionFragment : Fragment(R.layout.fragment_introduction) {
 
         binding.btnStartIntroduction.setOnClickListener {
             viewModel.startBtnClick()
-            findNavController().navigate(R.id.action_introductionFragment_to_accountOptionsFragment)
+            //findNavController().navigate(R.id.action_introductionFragment_to_accountOptionsFragment)
+        }
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.login.collect {
+                when (it) {
+                    is Resource.Loading -> {
+                        binding.btnStartIntroduction.startAnimation()
+                    }
+
+                    is Resource.Success -> {
+                        binding.btnStartIntroduction.revertAnimation()
+
+                        Intent(requireActivity(), ShoppingActivity::class.java).also { intent ->
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                            startActivity(intent)
+                        }
+                    }
+
+                    is Resource.Error -> {
+                        binding.btnStartIntroduction.revertAnimation()
+                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_LONG).show()
+                    }
+
+                    else -> Unit
+                }
+
+            }
         }
     }
 }

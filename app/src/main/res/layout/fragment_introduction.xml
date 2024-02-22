@@ -19,53 +19,54 @@
         android:id="@+id/ellipse"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/guideline_ellipse_left"
-        app:layout_constraintEnd_toEndOf="@id/guideline_ellipse_right"
-        app:layout_constraintTop_toTopOf="@id/guideline_ellipse_top"
-        app:layout_constraintBottom_toBottomOf="@id/guideline_ellipse_bottom"
         android:background="@drawable/ellips"
-        app:layout_constraintDimensionRatio="1:1" />
+        app:layout_constraintBottom_toBottomOf="@id/guideline_ellipse_bottom"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="@id/guideline_ellipse_right"
+        app:layout_constraintStart_toStartOf="@id/guideline_ellipse_left"
+        app:layout_constraintTop_toTopOf="@id/guideline_ellipse_top" />
 
     <TextView
         android:id="@+id/tv_right_address_for_shopping"
+        style="@style/h4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/h4"
         android:layout_marginTop="@dimen/tv_right_addres_for_shopping"
-        app:layout_constraintTop_toTopOf="@id/guideline_left_texture"
-        app:layout_constraintStart_toStartOf="@id/ellipse"
-        app:layout_constraintEnd_toEndOf="@id/ellipse"
-        app:layout_constraintBottom_toBottomOf="@id/ellipse"
+        android:gravity="center"
         android:text="@string/right_address"
         android:textAlignment="center"
-        android:gravity="center"
         android:textSize="35sp"
-        />
+        app:layout_constraintBottom_toBottomOf="@id/ellipse"
+        app:layout_constraintEnd_toEndOf="@id/ellipse"
+        app:layout_constraintStart_toStartOf="@id/ellipse"
+        app:layout_constraintTop_toTopOf="@id/guideline_left_texture" />
 
     <TextView
         android:id="@+id/tv_quality"
+        style="@style/h2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/h2"
-        app:layout_constraintStart_toStartOf="@id/tv_right_address_for_shopping"
-        app:layout_constraintEnd_toEndOf="@id/tv_right_address_for_shopping"
-        app:layout_constraintTop_toBottomOf="@id/tv_right_address_for_shopping"
-        android:textAlignment="center"
+        android:layout_marginTop="15dp"
         android:gravity="center"
         android:padding="2dp"
         android:text="@string/quality"
-        android:layout_marginTop="15dp"
-        />
-    <androidx.appcompat.widget.AppCompatButton
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@id/tv_right_address_for_shopping"
+        app:layout_constraintStart_toStartOf="@id/tv_right_address_for_shopping"
+        app:layout_constraintTop_toBottomOf="@id/tv_right_address_for_shopping" />
+
+    <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
         android:id="@+id/btn_start_introduction"
+        style="@style/blueButtonStyle"
         android:layout_width="@dimen/small_button_width"
         android:layout_height="@dimen/small_button_height"
-        style="@style/blueButtonStyle"
-        app:layout_constraintTop_toBottomOf="@id/tv_quality"
-        app:layout_constraintStart_toStartOf="@id/tv_quality"
-        app:layout_constraintEnd_toEndOf="@id/tv_quality"
+        android:layout_marginTop="15dp"
+        android:text="Start"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="Start" />
+        app:layout_constraintEnd_toEndOf="@id/tv_quality"
+        app:layout_constraintStart_toStartOf="@id/tv_quality"
+        app:layout_constraintTop_toBottomOf="@id/tv_quality"
+        app:spinning_bar_color="@color/white" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -73,8 +74,6 @@
         android:src="@drawable/texture_right"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guideline_left_texture" />
-
-
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -104,6 +103,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.19" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_ellipse_bottom"
         android:layout_width="wrap_content"

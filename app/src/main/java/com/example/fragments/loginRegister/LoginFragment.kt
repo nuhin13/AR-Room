@@ -46,17 +46,28 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             }
 
             lifecycleScope.launchWhenStarted {
-                viewModel.resetPassword.collect{
-                    when(it){
+                viewModel.resetPassword.collect {
+                    when (it) {
                         is Resource.Loading -> {
 
                         }
+
                         is Resource.Success -> {
-                            Snackbar.make(requireView(),"Reset link has sent to your email",Snackbar.LENGTH_LONG).show()
+                            Snackbar.make(
+                                requireView(),
+                                "Reset link has sent to your email",
+                                Snackbar.LENGTH_LONG
+                            ).show()
                         }
+
                         is Resource.Error -> {
-                            Snackbar.make(requireView(),"Error: ${it.message}",Snackbar.LENGTH_LONG).show()
+                            Snackbar.make(
+                                requireView(),
+                                "Error: ${it.message}",
+                                Snackbar.LENGTH_LONG
+                            ).show()
                         }
+
                         else -> Unit
                     }
                 }
@@ -66,32 +77,35 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
             }
 
-            btnLoginLogin.setOnClickListener{
+            btnLoginLogin.setOnClickListener {
                 val email = edEmailLogin.text.toString().trim()
                 val password = edPasswordLogin.text.toString()
-                viewModel.login(email,password)
-        }
+                viewModel.login(email, password)
+            }
         }
 
 
         lifecycleScope.launchWhenStarted {
-            viewModel.login.collect{
-                when(it){
+            viewModel.login.collect {
+                when (it) {
                     is Resource.Loading -> {
                         binding.btnLoginLogin.startAnimation()
                     }
+
                     is Resource.Success -> {
                         binding.btnLoginLogin.revertAnimation()
 
-                        Intent(requireActivity(),ShoppingActivity::class.java).also {intent->
+                        Intent(requireActivity(), ShoppingActivity::class.java).also { intent ->
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                             startActivity(intent)
                         }
                     }
+
                     is Resource.Error -> {
                         binding.btnLoginLogin.revertAnimation()
-                        Toast.makeText(requireContext(),it.message,Toast.LENGTH_LONG).show()
+                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_LONG).show()
                     }
+
                     else -> Unit
                 }
 
