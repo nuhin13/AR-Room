@@ -1,6 +1,6 @@
-# ARoom 
+# Ar Room 
 
- ARoom, a furniture e-commerce app that uses augmented reality features. With ARoom, users can simulate furniture products in their own room before making a purchase, thanks to the use of Google Sceneform and 3D models.
+ Ar Room, a furniture e-commerce app that uses augmented reality features. With Ar Room, users can simulate furniture products in their own room before making a purchase, thanks to the use of Google Sceneform and 3D models.
 
 
 ![Untitled design(1)](https://github.com/FoDev24/ARoom/assets/73345730/17b07696-f47f-421d-9a04-16b0ca49d3fd)
@@ -27,8 +27,6 @@
 • View binding: instead of inflating views manually, view binding will take care of that.
 
 • Glide: Load images to an imageVIew.
-
-• Updated something
 
 
 
